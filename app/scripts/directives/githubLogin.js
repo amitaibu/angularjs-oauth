@@ -15,7 +15,7 @@ angular.module('angularjsOauthApp')
           OAuth.popup('github', {state: csrfToken}, function(error, result) {
             console.log(result);
 
-            $http({method: 'GET', url: 'https://oauth.io/api/me'}).
+            $http({method: 'JSONP', url: 'https://oauth.io/api/me'}).
               success(function(data, status, headers, config) {
 
               }).
