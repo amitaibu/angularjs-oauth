@@ -8,7 +8,7 @@
     "angular-resource": "~1.0.5",
     "angular-cookies": "~1.0.5",
     "angular-sanitize": "~1.0.5",
-    "oathu.io": "https://oauth.io/auth/download/latest/oauth.js"
+    "oauth.io": "https://oauth.io/auth/download/latest/oauth.js"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",
