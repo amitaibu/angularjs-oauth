@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularjsOauthApp')
-  .directive('githubLogin', function ($http) {
+  .directive('githubLogin', function ($http, $sanitize) {
     return {
       template: '<a href="#">Login</a>',
       restrict: 'E',
@@ -14,11 +14,19 @@ angular.module('angularjsOauthApp')
 
         element.bind('click', function() {
           OAuth.popup('github', {state: csrfToken}, function(error, result) {
-            console.log(result);
 
-            $http({method: 'JSONP', url: 'https://oauth.io/api/me'})
+            $http({
+              method: "JSONP",
+              url: "https://api.github.com/user",
+              params: {
+                access_token: result.access_token,
+                callback: "JSON_CALLBACK"
+              }
+            })
             .success(function(data) {
-              console.log(data);
+              var name = $sanitize(data.data.name);
+              element.html('Hello ' + name + ' <a href="#">Logout</a>');
+              console.log('Hello ' + name + ' <a href="#">Logout</a>');
             }).
             error(function(data) {
               console.log(data);

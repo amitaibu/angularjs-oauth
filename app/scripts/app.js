@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularjsOauthApp', [])
+angular.module('angularjsOauthApp', ['ngSanitize'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
