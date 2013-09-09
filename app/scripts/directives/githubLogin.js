@@ -12,6 +12,16 @@ angular.module('angularjsOauthApp')
         // @todo: Get state from service.
         var csrfToken = 1234;
 
+        /**
+         * Change login.
+         *
+         * @param name
+         *   The unsanitized user name.
+         */
+        var loggedIn = function(name) {
+          element.html('Hello ' + $sanitize(name) + ' <a href="#">Logout</a>');
+        };
+
         element.bind('click', function() {
           OAuth.popup('github', {state: csrfToken}, function(error, result) {
 
@@ -24,9 +34,7 @@ angular.module('angularjsOauthApp')
               }
             })
             .success(function(data) {
-              var name = $sanitize(data.data.name);
-              element.html('Hello ' + name + ' <a href="#">Logout</a>');
-              console.log('Hello ' + name + ' <a href="#">Logout</a>');
+              loggedIn(data.data.name);
             }).
             error(function(data) {
               console.log(data);
