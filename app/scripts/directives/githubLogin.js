@@ -6,7 +6,7 @@ angular.module('angularjsOauthApp')
       template: '<a href="#">Login</a>',
       restrict: 'E',
       link: function postLink(scope, element) {
-        var OAuth = OAuth || {};
+        var OAuth = window.OAuth;
         OAuth.initialize('Wwa6lTxxmeeJxHIXLrGtu5bp6kw');
 
         // @todo: Get state from service.
